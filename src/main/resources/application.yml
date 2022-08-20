@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://127.0.0.1:3306/jpa-demo
+    password: root123
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      javax:
+        persistent:
+          sharedCache:
+            mode: ENABLE_SELECTIVE
+      dialect: org.hibernate.dialect.MySQL8Dialect
+      hibernate:
+        session:
+          events:
+            log:
+              LOG_QUERIES_SLOWER_THAN_MS: 3
+        hbm2ddl:
+          import: schema.sql
+        generate_statistics: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        sql: DEBUG
